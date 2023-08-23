@@ -32,6 +32,8 @@ $routes->set404Override();
 $routes->get('/', 'Home::database');
 $routes->get('mysql', 'Home::mysql');
 $routes->get('database', 'Home::database');
+$routes->post('salvarDados', 'Home::salvarDados');
+$routes->get('enviarParabens', 'Home::enviarParabens');
 
 
 

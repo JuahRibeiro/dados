@@ -18,26 +18,19 @@
     <hr />
 
     <?php
-    // Aqui você precisará adicionar código para se conectar ao seu banco de dados e buscar os clientes
 
-    // Exemplo de dados de clientes (substitua isso com a consulta real ao banco de dados)
-    $clientes = array(
-        array("codigo" => 1, "nome" => "Cliente 1", "email" => "cliente1@example.com", "data_nascimento" => "2000-01-01"),
-        array("codigo" => 2, "nome" => "Cliente 2", "email" => "cliente2@example.com", "data_nascimento" => "1995-05-15"),
-        array("codigo" => 3, "nome" => "Cliente 3", "email" => "cliente3@example.com", "data_nascimento" => "1988-10-20")
-    );
-
-    if (empty($clientes)) {
+    if (empty($result)) {
         echo "<p style='text-align: center;'>Nenhum cliente encontrado.</p>";
     } else {
         echo "<table style='margin: auto; border-collapse: collapse; width: 80%; text-align: center;'>";
         echo "<tr><th>Código</th><th>Nome</th><th>Email</th><th>Data de Nascimento</th></tr>";
-        foreach ($clientes as $cliente) {
+        foreach ($result as $row) {
+            $data_nascimento = date('d-m-Y', strtotime($row->data_nascimento));
             echo "<tr>";
-            echo "<td style='border: 1px solid black;'>" . $cliente['codigo'] . "</td>";
-            echo "<td style='border: 1px solid black;'>" . $cliente['nome'] . "</td>";
-            echo "<td style='border: 1px solid black;'>" . $cliente['email'] . "</td>";
-            echo "<td style='border: 1px solid black;'>" . $cliente['data_nascimento'] . "</td>";
+            echo "<td style='border: 1px solid black;'>" . $row->id . "</td>";
+            echo "<td style='border: 1px solid black;'>" . $row->nome . "</td>";
+            echo "<td style='border: 1px solid black;'>" . $row->email . "</td>";
+            echo "<td style='border: 1px solid black;'>" . $data_nascimento . "</td>";
             echo "</tr>";
         }
         echo "</table>";
@@ -46,10 +39,23 @@
     ?>
      <hr />
     <div style="text-align: center;">
-        <form action="mysql" style="display: inline;">
-            <input type="submit" value="Enviar felcitações...">
+        <form action="enviarParabens" style="display: inline;">
+            <input type="submit" value="Enviar felicitações...">
         </form>
     </div>
+
+    <?php 
+        if (!empty($msg)) {
+            echo "<p style='text-align: center;'> $msg </p>";
+        }
+
+        if (!empty($emailsParaParabens)) {
+            echo "<p style='text-align: center;'> Foram enviados os parabéns para os seguintes emails: </p>";
+            foreach ($emailsParaParabens as $email) {
+                echo "<p style='text-align: center;'>" . $email . "</p>";
+            }
+        }
+    ?>
 
 </body>
 

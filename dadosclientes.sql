@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/08/2023 às 23:09
+-- Tempo de geração: 23/08/2023 às 18:55
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -39,11 +39,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nome`, `email`, `data_nascimento`) VALUES
-(1, 'João Silva', 'joao@gmail.com', '1990-05-15'),
-(2, 'Maria Santos', 'maria@gmail.com', '1985-10-02'),
-(3, 'Pedro Oliveira', 'pedro@gmail.com', '2000-08-25'),
-(4, 'Ana Pereira', 'ana@gmail.com', '1998-07-12'),
-(5, 'Carlos Sousa', 'carlos@gmail.com', '1993-08-30');
+(5, 'Juah Ribeiro', 'juah@gmail.com', '2023-08-22');
 
 --
 -- Índices para tabelas despejadas
@@ -54,6 +50,16 @@ INSERT INTO `clientes` (`id`, `nome`, `email`, `data_nascimento`) VALUES
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
